@@ -147,6 +147,33 @@ for the individual haplotypes that modifies disease outcome, as well
 as the p-values for the association between the individual haplotypes
 and disease outcome. 
 
+### Optinal interaction analysis
+
+Two scripts, run_interactions.R and plot_interactions.R can be used to 
+fit 2 SNP gene-gene interaction models, if you have two or more genes
+in your data set. 
+Pay careful attention to the TODO comments in the scripts.
+
+First run *run_interactions.R*. 
+In the data/output directory, models with p-values < 0.05 for the 
+snp-snp interaction term are summarized. 
+This includes a q-value, which is analogous to a p-value, and has been 
+derived in an attempt to control the false discovery rate at an alpha
+level of 0.05 (refer to http://onlinelibrary.wiley.com/doi/10.1111/1467-9868.00346/full). 
+This might be over conservative.
+I would suggest that one determines the number of gene pair models 
+that were fitted (nr of genes choose 2, e.g. 5 genes choose 2 = 10 
+gene-gene models, you can use the *choose()* function in R to 
+calculate this, e.g. *choose(5,2)*) and then to use a Bonferroni
+correction using this as number of tests. 
+
+If there are any interesting models, explore this using the 
+*plot_interactions.R* script.
+Three plots will be created in the data/output directory. 
+
+See my gene-gene interactions paper for information on the 
+statistical methods used, and how results should be interpreted. 
+
 ## Interpreting results
 
 ### SNP summary
